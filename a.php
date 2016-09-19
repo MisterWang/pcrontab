@@ -12,7 +12,8 @@ $serv->on('connect', function ($serv, $fd) {
 $serv->on('receive', function ($serv, $fd, $from_id, $data) {
 //    $serv->send($fd, "Server: ".$data);
     $msg=unmypack($data);
-    command_switch($msg);
+    $data=command_switch($msg);
+    // $serv->task($data);
     // echo mypack(protocal_status::SUCCESS,[date("Y-m-d")]);
     $serv->send($fd,mypack(protocal_status::SUCCESS,[date("Y-m-d")]));
 });
@@ -22,7 +23,18 @@ $serv->on('close', function ($serv, $fd) {
     echo "Client: Close.\n";
 });
 
+//task
+$serv->on('task',function($serv,$task_id,$from_id,$data){
+
+});
+
+//task finished
+$serv->on('finished',function($serv,$task_id,$data){
+
+});
+
 $serv->set(array(
+    'woker_num'=>9,
     'package_max_length' => 8192,
     'open_eof_check'=> true,
     'package_eof' => "\r\n"
