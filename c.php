@@ -13,7 +13,7 @@ if (!$client->connect('127.0.0.1', 10086, 0.5))
     die("connect failed.");
 }
 
-foreach([protocal_command::LS,protocal_command::ADD,protocal_command::UPD,protocal_command::DEL] as $cmd){
+foreach([protocal_command::ADD,protocal_command::LS,protocal_command::UPD,protocal_command::DEL] as $cmd){
     //向服务器发送数据
     $msg='hello world';
     $pack=mypack($cmd,[$msg]);

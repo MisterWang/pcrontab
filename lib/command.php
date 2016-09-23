@@ -26,20 +26,4 @@ class command_handle{
     }
 }
 
-//注册执行方法
-command_handle::register(protocal_command::LS,function(){
-    echo 'protocal_command::LS'.PHP_EOL;
-});
-
-command_handle::register(protocal_command::ADD,function(){
-    echo 'protocal_command::ADD'.PHP_EOL;
-});
-
-command_handle::register(protocal_command::DEL,function(){
-    echo 'protocal_command::DEL'.PHP_EOL;
-});
-
-command_handle::register(protocal_command::UPD,function(){
-    echo 'protocal_command::UPD'.PHP_EOL;
-});
 
