@@ -13,9 +13,11 @@ if (!$client->connect('127.0.0.1', 10086, 0.5))
     die("connect failed.");
 }
 
-foreach([protocal_command::ADD,protocal_command::LS,protocal_command::UPD,protocal_command::DEL] as $cmd){
+// foreach([protocal_command::ADD,protocal_command::LS,protocal_command::UPD,protocal_command::DEL] as $cmd){
     //向服务器发送数据
-    $msg='hello world';
+    $cmd=protocal_command::ADD;//cmd name exec_cmd time
+    // $msg='hello world';
+    $msg="test echo+'123' * * * * *";
     $pack=mypack($cmd,[$msg]);
     if (!$client->send($pack))
     {
@@ -29,6 +31,6 @@ foreach([protocal_command::ADD,protocal_command::LS,protocal_command::UPD,protoc
     }
     echo $data;
 // echo unmypack($data);
-}
+// }
 //关闭连接
 $client->close();
